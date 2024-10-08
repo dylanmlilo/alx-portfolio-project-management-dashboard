@@ -4,10 +4,15 @@
 }
 
 nav .navbar-brand #logo {
-    width: 68px;
-    height: 68px;
+    width: 60px;
+    height: 60px;
     margin: 0 8px;
-} 
+    border-radius: 50%;
+}
+
+.company_name {
+    font-weight: bold;
+}
 
 .offcanvas-body .dropdown .dropdown-menu {
     background: rgb(198, 205, 209);

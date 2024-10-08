@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="stats-container strategic">
+    <h1>Strategic Planning</h1>
+</div>
+<p class="card-text date"> today_date </p>
+<div class="stats_data_container">
+    <h2>Task Management Tracking</h2>
+    <div class="table-responsive">
+        <table id="strats_table" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr class="table-dark">
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Deadline</th>
+                    <th>Task</th>
+                    <th>Desciption</th>
+                    <th>Assigned To</th>
+                    <th>Deliverable</th>
+                    <th>% Done</th>
+                    <th>Fixed Cost</th>
+                    <th>Estimated Hours</th>
+                    <th>Actual Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>status</td>
+                    <td>priority</td>
+                    <td>deadline</td>
+                    <td>task</td>
+                    <td>description</td>
+                    <td>project_manager</td>
+                    <td>deliverables</td>
+                    <td>percentage_done</td>
+                    <td>fixed_cost</td>
+                    <td>estimated_hours</td>
+                    <td>actual_hours</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock%}

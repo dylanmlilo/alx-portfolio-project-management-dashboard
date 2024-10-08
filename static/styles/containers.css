@@ -31,3 +31,72 @@
     border-radius: 10px;
     margin: 50px auto;
 }
+
+.stats-container {
+    height: 400px;
+    text-align: center;
+    padding-top: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 4px 4px 16px #000
+}
+
+.stats-container.serviving {
+    background: url("../images/excavator1920.jpg") no-repeat center;
+}
+
+.stats-container.gis{
+    background: url("../images/drone1920.jpg") no-repeat center;
+}
+
+.stats-container.strategic{
+    background: url("../images/strats1500.jpg") no-repeat;
+}
+
+.stats-container h1 {
+    font-size: 4rem;
+    color: #fff;
+}
+
+.stats_background {
+    padding: 20px;
+    background-color: lightgray;
+}
+
+.stats_data_container {
+    background: rgba(107, 109, 109, 0.712);
+    margin-top: 100px;
+    border: 3px solid #948d8d;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.stats_data_container:hover {
+    background: rgb(165, 172, 172);
+    border-radius: 10px;
+}
+
+.stats_data_container .table-responsive
+{
+    padding: 10px 10px;
+}
+
+.stats_data_container .table tr td, .stats_data_container .table tr th, .stats_data_container .table tr .dt-type-numeric {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.stats_data_container .table tr td:hover {
+    background: rgba(233, 236, 236, 0.274);
+}
+
+.stats_data_container h2 {
+    margin-top: 20px;
+}
+
+.stats_data_container .btn-success {
+    float: right;
+}
+
+.stats_data_container .btn.btn-warning {
+    margin-bottom: 2px;
+}
