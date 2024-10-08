@@ -1,0 +1,33 @@
+/* Containers CSS */
+
+/* Home Page Containers */
+.main_container .date h2 {
+    background: #e0ffff;
+    padding: 20px;
+    text-shadow: 1px 1px 2px #2e2c2c;
+    font-size: 3rem;
+}
+
+.main_container .sub-heading {
+    width: 50%;
+    margin: 50px auto;
+    background: rgba(47, 182, 182, 0.767);
+    padding: 5px 0 10px 0;
+    border-radius: 60px;
+    color: rgba(1, 1, 66, 0.6);
+}
+
+.main_container .sub-heading h2 {
+    margin-top: 20px;
+    font-size: x-large;
+    font-size: 3rem;
+} 
+
+.date {
+    font-size: 2rem;
+    background: rgb(165, 172, 172);
+    width: 50%;
+    border: 2px solid #948d8d;
+    border-radius: 10px;
+    margin: 50px auto;
+}

@@ -1,0 +1,48 @@
+footer {
+    background: rgba(2, 25, 46, 0.909);
+    width: 100%;
+    border-top: 1px solid gray;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    color: #fff;
+}
+
+footer .nav-link {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.vision {
+    font-size: 1.7rem;
+}
+
+.copyright {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.contact_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.contact_details {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.copyright_date {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.email {
+    color: rgb(255, 255, 255);
+}
+
+.email:hover {
+    color: rgba(7, 97, 187, 0.849);
+    text-decoration: none;
+}
