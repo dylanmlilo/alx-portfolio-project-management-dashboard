@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="stats-container gis">
+    <h1>GIS Projects</h1>
+</div>
+<p class="card-text date"> today_date </p>
+<div class="stats_data_container">
+    <h2>Summary of GIS Projects</h2>
+    <div class="table-responsive">
+        <table id="gis_table" class="table table-hover table-bordered table-striped">
+            <thead>
+            <tr class="table-dark">
+                <th>OUT PUT</th>
+                <th>
+                    ACTIVITY<br>
+                    Activities add up
+                    to 100% of the
+                    Output
+                </th>
+                <th>
+                    TASK<br>
+                    Tasks add up to 100%
+                    of the Activity
+                </th>
+                <th>
+                    RESPONSIBLE
+                    OFFICER/PERSON<br>
+                    Names of Responsible
+                    People in Full
+                </th>
+                <th>DESIGNATION</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr class="table-light">
+                    <td> output_name </td>
+                    <td> activity </td>
+                    <td> task_description </td>
+                    <td> responsible_person </td>
+                    <td> designation </td>  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock%}
