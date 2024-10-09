@@ -1,10 +1,10 @@
 .landing_container {
-    background: url("../images/stp.jpg") no-repeat center;
+    background: url("../images/excavator1920.jpg") no-repeat center;
 }
 
 .landing_flex {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 10px;
 }
 
