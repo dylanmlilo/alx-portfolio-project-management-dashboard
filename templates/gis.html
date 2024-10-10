@@ -34,13 +34,15 @@
             </thead>
 
             <tbody>
+                {% for gis_data in gis_data_list %}
                 <tr class="table-light">
-                    <td> output_name </td>
-                    <td> activity </td>
-                    <td> task_description </td>
-                    <td> responsible_person </td>
-                    <td> designation </td>  
+                    <td> {{gis_data.output_name}} </td>
+                    <td> {{gis_data.activity}} </td>
+                    <td> {{gis_data.task_description}} </td>
+                    <td> {{gis_data.responsible_person}} </td>
+                    <td> {{gis_data.designation}} </td>  
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

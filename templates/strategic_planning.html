@@ -4,7 +4,7 @@
 <div class="stats-container strategic">
     <h1>Strategic Planning</h1>
 </div>
-<p class="card-text date"> today_date </p>
+<p class="card-text date">{{ today_date }}</p>
 <div class="stats_data_container">
     <h2>Task Management Tracking</h2>
     <div class="table-responsive">
@@ -25,19 +25,21 @@
                 </tr>
             </thead>
             <tbody>
+                {% for strategic_data in strategic_data_list %}
                 <tr>
-                    <td>status</td>
-                    <td>priority</td>
-                    <td>deadline</td>
-                    <td>task</td>
-                    <td>description</td>
-                    <td>project_manager</td>
-                    <td>deliverables</td>
-                    <td>percentage_done</td>
-                    <td>fixed_cost</td>
-                    <td>estimated_hours</td>
-                    <td>actual_hours</td>
+                    <td>{{ strategic_data.status }}</td>
+                    <td>{{ strategic_data.priority or '' }}</td>
+                    <td>{{ strategic_data.deadline or '' }}</td>
+                    <td>{{ strategic_data.task or '' }}</td>
+                    <td>{{ strategic_data.description or '' }}</td>
+                    <td>{{ strategic_data.project_manager or '' }}</td>
+                    <td>{{ strategic_data.deliverables or '' }}</td>
+                    <td>{{ strategic_data.percentage_done or '' }}</td>
+                    <td>{{ strategic_data.fixed_cost or '' }}</td>
+                    <td>{{ strategic_data.estimated_hours or '' }}</td>
+                    <td>{{ strategic_data.actual_hours or '' }}</td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
