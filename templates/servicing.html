@@ -4,7 +4,7 @@
 <div class="stats-container serviving">
     <h1>Servicing Projects</h1>
 </div>
-<p class="card-text date"> today_date </p>
+<p class="card-text date">{{ today_date }}</p>
 <div class="stats_data_container">
     <h2>Summary of Servicing Projects Progress Data</h2>
     <div class="table-responsive">
@@ -25,19 +25,24 @@
                     <th>Total Progress (%)</th>
                 </tr>
             </thead>
+
             <tbody>
-                <td>contract_number</td>
-                <td>contract_name</td>
-                <td>project_manager</td>
-                <td>contractor</td>
-                <td>year</td>
-                <td>project_status</td>
-                <td>water_progress</td>
-                <td>sewer_progress</td>
-                <td>roads_progress</td>
-                <td>storm_drainage_progress</td>
-                <td>public_lighting_progress</td>
-                <td>physical_progress_percentage</td>
+            {% for servicing_data in projects_data %}
+                <tr>
+                    <td>{{ servicing_data.contract_number or '' }}</td>
+                    <td>{{ servicing_data.contract_name or '' }}</td>
+                    <td>{{ servicing_data.project_manager or '' }}</td>
+                    <td>{{ servicing_data.contractor or ''}}</td>
+                    <td>{{ servicing_data.year or '' }}</td>
+                    <td>{{ servicing_data.project_status or '' }}</td>
+                    <td>{{ servicing_data.water_progress or '' }}</td>
+                    <td>{{ servicing_data.sewer_progress or '' }}</td>
+                    <td>{{ servicing_data.roads_progress or '' }}</td>
+                    <td>{{ servicing_data.storm_drainage_progress or '' }}</td>
+                    <td>{{ servicing_data.public_lighting_progress or '' }}</td>
+                    <td>{{ servicing_data.physical_progress_percentage or '' }}</td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
