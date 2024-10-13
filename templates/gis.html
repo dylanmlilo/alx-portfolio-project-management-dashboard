@@ -4,7 +4,7 @@
 <div class="stats-container gis">
     <h1>GIS Projects</h1>
 </div>
-<p class="card-text date"> today_date </p>
+<p class="card-text date">{{ today_date }}</p>
 <div class="stats_data_container">
     <h2>Summary of GIS Projects</h2>
     <div class="table-responsive">
@@ -34,17 +34,31 @@
             </thead>
 
             <tbody>
-                {% for gis_data in gis_data_list %}
-                <tr class="table-light">
-                    <td> {{gis_data.output_name}} </td>
-                    <td> {{gis_data.activity}} </td>
-                    <td> {{gis_data.task_description}} </td>
-                    <td> {{gis_data.responsible_person}} </td>
-                    <td> {{gis_data.designation}} </td>  
-                </tr>
+                {% for output_name, group in gis_data_grouped %}
+                    <tr class="table-light">
+                        <td rowspan="{{ group|length }}">{{ output_name }}</td>
+                        <td>{{ group[0].activity }}</td>
+                        <td>{{ group[0].task_description }}</td>
+                        <td>{{ group[0].responsible_person }}</td>
+                        <td>{{ group[0].designation }}</td>
+                    </tr>
+                    {% for data in group[1:] %}
+                        <tr class="table-light" style="border-top: none;">
+                            <td>{{ data.activity }}</td>
+                            <td>{{ data.task_description }}</td>
+                            <td>{{ data.responsible_person }}</td>
+                            <td>{{ data.designation }}</td>
+                        </tr>
+                    {% endfor %}
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+<script src="https://cdn.datatables.net/inline-rows/2.0.8/inline-rows.js"></script>
 {% endblock%}

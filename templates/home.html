@@ -80,5 +80,72 @@
           </table>
       </div>
     </div>
+    <div class="charts-container">
+      <div id="graph-container1" class="graph-container"></div>
+      <div id="graph-container2" class="graph-container"></div>
+      <div class="pie_container">
+        <div id="graph-container3" class="graph-container"></div>
+        <div id="graph-container5" class="graph-container"></div>
+      </div>
+      <div id="graph-container4" class="graph-container"></div>
+    </div>
 </div>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+<script src="https://cdn.datatables.net/inline-rows/2.0.8/inline-rows.js"></script>
+<script>
+  $(document).ready(function() {
+      $('#home_table').DataTable({
+          // "paging": true, // Disable pagination for inline editing
+          // "ordering": false, // Disable sorting for inline editing
+          // "info": false, // Disable info display for inline editing
+          // "scrollY": '50vh', // Set a fixed height for vertical scrolling
+          // "scrollCollapse": true, // Enable scrolling
+          // "scrollX": true, // Enable horizontal scrolling
+          // "autoWidth": false // Disable automatic column width calculation
+      });
+  });
+</script>
+<script>
+        // Load area plots
+        var graph1Data = {{ graph1JSON | safe }};
+        Plotly.newPlot('graph-container1', graph1Data, { responsive: true });
+
+        var graph2Data = {{ graph2JSON | safe }};
+        Plotly.newPlot('graph-container2', graph2Data, { responsive: true });
+
+        // Load Pie Chart
+        var graph3Data = {{ graph3JSON | safe }};
+        Plotly.newPlot('graph-container3', graph3Data, { responsive: true });
+
+        // Load Tree Chart
+        var graph4Data = {{ graph4JSON | safe }};
+        Plotly.newPlot('graph-container4', graph4Data, { responsive: true });
+
+        // Load Sunburst Chart
+        var graph5Data = {{ graph5JSON | safe }};
+        Plotly.newPlot('graph-container5', graph5Data, { responsive: true });
+
+        function updateChartSize() {
+        const graphContainers = document.querySelectorAll('.graph-container');
+  
+        for (const container of graphContainers) {
+          const chartId = container.id; // Get the chart container ID
+          const chart = document.getElementById(chartId); // Find the chart element
+        
+          // Set chart width to occupy full width of the container
+          const containerWidth = container.clientWidth;
+          Plotly.relayout(chart, { width: containerWidth });
+        }
+    }
+  
+    // Initial call to set correct width on page load
+    updateChartSize();
+  
+    window.addEventListener('resize', updateChartSize);
+
+</script>
 {% endblock%}

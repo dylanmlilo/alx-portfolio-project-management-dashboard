@@ -27,8 +27,13 @@
             <tbody>
                 {% for strategic_data in strategic_data_list %}
                 <tr>
-                    <td>{{ strategic_data.status }}</td>
-                    <td>{{ strategic_data.priority or '' }}</td>
+                    <td class="{% if strategic_data.status == 'In Progress' %}table-yellow_green
+                {%elif strategic_data.status == 'Complete' %}table-green
+                {%elif strategic_data.status == 'Overdue' %}table-red
+                {% else %}table-info{% endif %}">{{ strategic_data.status }}</td>
+                <td class="{% if strategic_data.priority == 'Low' %}table-blue 
+                {%elif strategic_data.priority == 'High' %}table-red
+                {% else %}table-yellow{% endif %}">{{ strategic_data.priority or '' }}</td>
                     <td>{{ strategic_data.deadline or '' }}</td>
                     <td>{{ strategic_data.task or '' }}</td>
                     <td>{{ strategic_data.description or '' }}</td>
@@ -44,4 +49,24 @@
         </table>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+<script src="https://cdn.datatables.net/inline-rows/2.0.8/inline-rows.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#strats_table').DataTable({
+            // "paging": true, // Disable pagination for inline editing
+            // "ordering": false, // Disable sorting for inline editing
+            // "info": false, // Disable info display for inline editing
+            // "scrollY": '50vh', // Set a fixed height for vertical scrolling
+            // "scrollCollapse": true, // Enable scrolling
+            // "scrollX": true, // Enable horizontal scrolling
+            // "autoWidth": false // Disable automatic column width calculation
+        });
+    });
+</script>
 {% endblock%}

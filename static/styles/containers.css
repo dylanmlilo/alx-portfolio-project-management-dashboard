@@ -21,45 +21,6 @@
     margin-top: 20px;
     font-size: x-large;
     font-size: 3rem;
-} 
-
-.date {
-    font-size: 2rem;
-    background: rgb(165, 172, 172);
-    width: 50%;
-    border: 2px solid #948d8d;
-    border-radius: 10px;
-    margin: 50px auto;
-}
-
-.stats-container {
-    height: 400px;
-    text-align: center;
-    padding-top: 80px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    text-shadow: 4px 4px 16px #000
-}
-
-.stats-container.serviving {
-    background: url("../images/excavator1920.jpg") no-repeat center;
-}
-
-.stats-container.gis{
-    background: url("../images/drone1920.jpg") no-repeat center;
-}
-
-.stats-container.strategic{
-    background: url("../images/strats1500.jpg") no-repeat;
-}
-
-.stats-container h1 {
-    font-size: 4rem;
-    color: #fff;
-}
-
-.stats_background {
-    padding: 20px;
-    background-color: lightgray;
 }
 
 .stats_data_container {
@@ -97,6 +58,166 @@
     float: right;
 }
 
+/* .stats_data_container .update-btn.btn {
+    margin-top: 10px;
+}
+
+.stats_data_container .back-btn {
+    margin-top: 10px;
+} */
+
 .stats_data_container .btn.btn-warning {
     margin-bottom: 2px;
+}
+
+.about_container {
+    max-width: 75%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f5f5f5;;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main_paragraph {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.sub_paragraph {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+
+/* BCC_Projects_Dashboard\static\styles\containers.css */
+.main_graph {
+    width: 100%;
+    background-color: rgb(206, 188, 194);
+}
+
+.charts-container {
+    margin: 5px;
+}
+
+.pie_container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.graph-container {
+    width: 100%;
+    height: 500px;
+    margin: 20px 5px;
+}
+
+.stats-container {
+    height: 400px;
+    text-align: center;
+    padding-top: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 4px 4px 16px #000
+}
+
+.stats-container.serviving {
+    background: url("../images/excavator1920.jpg") no-repeat center;
+}
+
+.stats-container.gis{
+    background: url("../images/drone1920.jpg") no-repeat center;
+}
+
+.stats-container h1 {
+    font-size: 4rem;
+    color: #fff;
+}
+
+.stats_percentage_container .stats_percentage {
+    text-shadow: 1px 1px 2px #000;
+    font-size: 4rem;
+    color: #0d91b3;
+}
+
+.date {
+    font-size: 2rem;
+    background: rgb(165, 172, 172);
+    width: 50%;
+    border: 2px solid #948d8d;
+    border-radius: 10px;
+    margin: 50px auto;
+}
+
+.stats_background {
+    padding: 20px;
+    background-color: lightgray;
+}
+  
+.graph1, .graph2, .graph3 {
+    margin: 10px;
+    /* text-align: center;
+    color: whitesmoke;
+    text-shadow: 2px 2px 4px #000; */
+}
+
+.stats_percentage_container {
+    margin-top: 20px;
+    padding: 2rem;
+}
+
+.stats_percentage_container .card-body {
+    background-color: #e0ffff;
+    border-radius: 5px;
+}
+
+.gis_image {
+    width: 100%;
+}
+
+.table-responsive .table .table-yellow {
+    background-color: rgb(255, 255, 0);
+}
+
+.table-responsive .table .table-yellow:hover {
+    background-color: rgba(255, 255, 0, 0.7);
+}
+
+.table-responsive .table .table-red {
+    background-color: rgb(255, 0, 0);
+}
+
+.table-responsive .table .table-red:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.table-responsive .table .table-green {
+    background-color: rgb(10, 141, 10);
+}
+
+.table-responsive .table .table-green:hover {
+    background-color: rgba(10, 141, 10, 0.7);
+}
+
+.table-responsive .table .table-yellow_green {
+    background-color: rgb(154, 205, 50);
+}
+
+.table-responsive .table .table-yellow_green:hover {
+    background-color: rgba(154, 205, 50, 0.7);
+}
+
+.table-responsive .table .table-blue {
+    background-color: rgb(72, 203, 243);
+}
+
+.table-responsive .table .table-blue:hover {
+    background-color: rgba(72, 203, 243, 0.6);
 }
