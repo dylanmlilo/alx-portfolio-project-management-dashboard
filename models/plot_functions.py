@@ -4,7 +4,7 @@ import json
 import plotly
 import plotly_express as px
 import plotly.graph_objects as go
-from models.projects import ContractType, projects_data_to_dict_list
+from models.projects import ContractType, ProjectsData
 from datetime import datetime
 
 
@@ -32,7 +32,7 @@ def plot_home_page_charts():
     graph1JSON (str): JSON representation of the physical progress plot.
     graph2JSON (str): JSON representation of the reservoir levels plot.
     """
-    projects_data = projects_data_to_dict_list()
+    projects_data = ProjectsData.projects_data_to_dict_list()
     df = pd.DataFrame(projects_data)
 
     df_filtered_fig1 = df[df['physical_progress_percentage'].notnull()]

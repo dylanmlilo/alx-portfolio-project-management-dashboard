@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from models.projects import projects_data_to_dict_list
+from models.projects import ProjectsData
 from models.plot_functions import today_date, plot_servicing_page_charts
 
 
@@ -19,7 +19,7 @@ def servicing():
     Returns:
         Flask.Response: The rendered template.
     """
-    projects_data = projects_data_to_dict_list(1)
+    projects_data = ProjectsData.projects_data_to_dict_list(1)
     servicing_data_JSON = plot_servicing_page_charts()
     formatted_date = today_date()
     return render_template("servicing.html", projects_data=projects_data,
