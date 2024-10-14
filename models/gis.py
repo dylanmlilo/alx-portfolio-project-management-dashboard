@@ -239,31 +239,24 @@ def gis_data_to_dict_list():
         ).outerjoin(
             Task, Activity.id == Task.activity_id
         )
-    except Exception as e:
-        session.rollback()
-        print(f"An error occurred: {e}")
-    finally:
-        session.close()
 
-    try:
         results = session.execute(query).fetchall()
+
+        gis_data = []
+        for row in results:
+            gis_dict = {
+                "output_id": row[0],
+                "output_name": row[1],
+                "activity": row[2],
+                "responsible_person": row[3],
+                "designation": row[4],
+                "task_description": row[5],
+                "percentage_of_activity": row[6]
+            }
+            gis_data.append(gis_dict)
+
     except Exception as e:
         session.rollback()
         print(f"An error occurred: {e}")
-    finally:
-        session.close()
-
-    gis_data = []
-    for row in results:
-        gis_dict = {
-            "output_id": row[0],
-            "output_name": row[1],
-            "activity": row[2],
-            "responsible_person": row[3],
-            "designation": row[4],
-            "task_description": row[5],
-            "percentage_of_activity": row[6]
-        }
-        gis_data.append(gis_dict)
 
     return gis_data
