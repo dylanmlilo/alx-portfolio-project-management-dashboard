@@ -226,7 +226,7 @@ h3 {
 /* Login Styles */
 
 .login_container, .admin_dashboard, .denied_access_container {
-    background: linear-gradient(to top left, rgb(23, 133, 161) 50%, rgb(142, 149, 150) 50%);
+    background: linear-gradient(to top left, rgba(8, 58, 103, 0.95) 50%, rgb(142, 149, 150) 50%);
     width: 80%;
     height: 370px;
     margin: 90px auto;
@@ -272,3 +272,29 @@ h3 {
   .form-container .btn {
     margin: 0 50px 0 0;
   }
+
+
+  /* Denied Access Styles */
+
+  .denied_access_title {
+    font-size: 3rem;
+    padding-top: 100px;
+    text-shadow: 1px 1px 2px #000;
+    color: red;
+}
+
+.denied_access_button {
+    margin-top: 20px;
+    font-size: 4rem;
+}
+
+/* Admin Dashboard Styles */
+
+.admin-dashboard_select {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.admin_dashboard h1 {
+    padding-top: 25px;
+}

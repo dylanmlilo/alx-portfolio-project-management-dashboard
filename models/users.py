@@ -43,3 +43,6 @@ class Users(Base, UserMixin):
             f"role='{self.role}'"
             f")>"
         )
+    
+    def has_role(self, role):
+        return self.role == role

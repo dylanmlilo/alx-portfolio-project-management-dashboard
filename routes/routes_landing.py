@@ -1,8 +1,4 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
-
-
-landing_bp = Blueprint('landing', __name__)
-from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user
 from models.users import Users
 from models.login import LoginForm
@@ -55,3 +51,8 @@ def logout():
     """
     logout_user()
     return redirect(url_for('landing.login'))
+
+
+@landing_bp.route("/denied_access", strict_slashes=False)
+def denied_access():
+    return render_template("denied_access.html")
