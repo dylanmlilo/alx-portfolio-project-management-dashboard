@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required
 from models.plot_functions import today_date
 from models.gis import gis_data_to_dict_list
 from models.plot_functions import today_date
@@ -9,6 +10,7 @@ gis_data_bp = Blueprint('gis_data', __name__)
 
 
 @gis_data_bp.route("/GIS", strict_slashes=False)
+@login_required
 def gis():
     """
     Function to handle GIS route.

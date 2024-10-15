@@ -4,10 +4,9 @@
 
 .landing_flex {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 1fr;
     gap: 10px;
 }
-
 
 .landing-heading {
     text-align: center;

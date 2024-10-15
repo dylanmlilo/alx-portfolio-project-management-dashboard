@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required
 from models.projects import ProjectsData
 from models.plot_functions import today_date, plot_servicing_page_charts
 
@@ -7,6 +8,7 @@ sections_bp = Blueprint('sections', __name__)
 
 
 @sections_bp.route("/Servicing", strict_slashes=False)
+@login_required
 def servicing():
     """
     Renders the 'servicing.html' template with project
