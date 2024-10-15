@@ -13,6 +13,7 @@
         <h5 class="offcanvas-title company_name" id="offcanvasNavbarLabel" style="color: black;">NANDO CONSTRUCTION</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      {% if current_user.is_authenticated %}
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 align-items-center gap-4">
           <li class="nav-item active">
@@ -37,7 +38,7 @@
           <li class="nav-item active dropdown">
             <a class="nav-link" href="#"
                id="navbarDropdownUsername" role="button"
-               data-bs-toggle="dropdown" aria-expanded="false"><h5 class="username">username</h5>
+               data-bs-toggle="dropdown" aria-expanded="false"><h5 class="username">{{ current_user.username }}</h5>
             </a>
             <ul class="dropdown-menu dropdown-menu-end username" aria-labelledby="navbarDropdownUsername">
               <li class="nav-item active">
@@ -49,6 +50,7 @@
             </ul>
           </li>
       </div>
+      {% endif %}
     </div>
   </div>
 </nav>

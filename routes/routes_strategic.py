@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_required
 from models.plot_functions import today_date
 from models.strategic import StrategicTask
 
@@ -7,6 +8,7 @@ strategic_bp = Blueprint('strategic', __name__)
 
 
 @strategic_bp.route("/StrategicPlanning", strict_slashes=False)
+@login_required
 def strategic_planning():
     """
     Function to handle Strategic Planning route.
