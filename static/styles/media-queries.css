@@ -3,7 +3,7 @@
 @media (max-width: 480px) {
 
     .main-heading {
-        background: url("../images/excavator480.jpg") no-repeat center;;
+        height: 250px;
     }
 
     .main_container .gauge_charts_container {
@@ -97,15 +97,41 @@
     }
 
     .landing_container {
-        background: url("../images/stp.jpg");
+        padding-bottom: 40px;
     }
 
     .landing_flex {
         display: block;
     }
 
+    .landing-heading h1 {
+        font-size: 2.75rem;
+        padding-top: 30px;
+    }
+    
+    .landing-heading h2 {
+        font-size: 1.8rem;
+    }
+
     .login_container {
         height: 400px;
+    }
+
+    .about_container {
+        margin: 80px auto;
+    }
+
+    nav .navbar-brand #logo {
+        width: 55px;
+        height: 55px;
+    }
+
+    .form-container #username, .form-container #password {
+        width: 120px;
+    }
+
+    .login_container, .admin_dashboard, .denied_access_container {
+        margin: 0px auto;
     }
 }
 
@@ -113,7 +139,7 @@
 @media (min-width: 481px) and (max-width: 610px) {
 
     .main-heading {
-        background: url("../images/excavator610.jpg") no-repeat center;;
+        height: 250px;
     }
 
     .main_container .main-heading h1 {
@@ -191,25 +217,45 @@
     }
 
     .landing_container {
-        background: url("../images/stp.jpg");
+        padding-bottom: 50px;
     }
 
     .landing_flex {
         display: block;
     }
 
+    .landing-heading h1 {
+        font-size: 3rem;
+        padding-top: 30px;
+    }
+    
+    .landing-heading h2 {
+        font-size: 2rem;
+    }
+
     .login_container {
         height: 400px;
+    }
+
+    .login_container, .admin_dashboard, .denied_access_container {
+        margin: 0px auto;
+    }
+
+    .about_container {
+        margin: 90px auto;
+    }
+
+    nav .navbar-brand #logo {
+        width: 55px;
+        height: 55px;
     }
 
 }
 
 @media (min-width: 611px) and (max-width: 991px) {
-
-    .main-heading {
-        background: url("../images/excavator991.jpg") no-repeat center;;
-    }
     
+    main
+
     .main_container .main-heading h1 {
         font-size: 3.5rem;
         padding-top: 40px;
@@ -221,6 +267,10 @@
 
     .main_container .sub-heading h2 {
         font-size: 2rem;
+    }
+
+    .main-heading {
+        height: 300px;
     }
 
     .pie_container {
@@ -270,23 +320,50 @@
     }
 
     .landing_container {
-        background: url("../images/stp.jpg");
+        padding-bottom: 70px;
     }
 
     .landing_flex {
         display: block;
     }
 
+    .landing-heading h1 {
+        font-size: 3.5rem;
+        padding-top: 40px;
+    }
+    
+    .landing-heading h2 {
+        font-size: 2.5rem;
+    }
+
     .login_container {
         height: 350px;
+        margin-right: 40px;
+    }
+
+    .login_container, .admin_dashboard, .denied_access_container {
+        margin: 0px auto;
+    }
+
+    .about_container {
+        margin: 100px auto;
+    }
+
+    nav .navbar-brand #logo {
+        width: 55px;
+        height: 55px;
     }
 
 }
 
 @media (min-width: 992px) and (max-width: 1500px) {
 
-    .main-heading {
-        background: url("../images/excavator2.jpg") no-repeat center;;
+    .main-heading h1 {
+        font-size: 5rem;
+    }
+
+    .main-heading h2 {
+        font-size: 3.5rem;
     }
 
     .pie_container .graph-container {
@@ -327,13 +404,46 @@
     }
 
     .login_container {
-        margin-left: 20px;
-        height: 500px;
+        margin-right: 80px;
+        height: 400px;
+        width: 330px;
+    }
+
+    .landing_container {
+        background: url("../images/construction-site-2000.jpg") no-repeat center;
+    }
+
+    .landing_flex {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 10px;
+    }
+
+    .landing-heading h1 {
+        font-size: 4rem;
+        padding-top: 50px;
+    }
+    
+    .landing-heading h2 {
+        font-size: 3.2rem;
+    }
+
+    nav .navbar-brand #logo {
+        width: 60px;
+        height: 60px;
     }
 }
 
 
 @media (min-width: 1501px) {
+
+    .main-heading h1 {
+        font-size: 6rem;
+    }
+
+    .main-heading h2 {
+        font-size: 4rem;
+    }
 
     .stats-container h1 {
         font-size: 6rem;
@@ -370,6 +480,30 @@
 
     .login_container {
         margin-left: 20px;
-        height: 500px;
+        height: 400px;
+    }
+
+    .landing_container {
+        background: url("../images/construction-site.jpg") no-repeat center;
+    }
+
+    .landing_flex {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 10px;
+    }
+
+    .landing-heading h1 {
+        font-size: 5.5rem;
+        padding-top: 60px;
+    }
+    
+    .landing-heading h2 {
+        font-size: 4.5rem;
+    }
+
+    nav .navbar-brand #logo {
+        width: 60px;
+        height: 60px;
     }
 }

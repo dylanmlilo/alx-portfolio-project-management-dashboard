@@ -23,21 +23,14 @@ main {
 }
 
 .main-heading h1 {
-    font-size: 4rem;
     color: #fff;
     text-shadow: 2px 2px 4px #000;
     padding-top: 50px;
 }
 
-.test {
-    height: 100px;
-    background: rgba(5, 59, 141, 0.767);
-}
-
 .main-heading h2 {
     color: #fff;
     text-shadow: 2px 2px 4px #000;
-    font-size: 3rem;
 }
   
 .content {
