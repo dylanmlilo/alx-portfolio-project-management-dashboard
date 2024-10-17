@@ -27,3 +27,68 @@ def servicing():
     return render_template("servicing.html", projects_data=projects_data,
                            today_date=formatted_date,
                            servicing_data_JSON=servicing_data_JSON)
+
+
+@sections_bp.route("/Goods", strict_slashes=True)
+@login_required
+def goods():
+    """
+    Function to handle /Goods route.
+
+    Retrieves projects data and today's date,
+    then renders the goods.html template.
+
+    Parameters:
+    - None
+
+    Returns:
+    - Rendered template "goods.html" with today's date and projects data.
+
+    """
+    projects_data = ProjectsData.projects_data_to_dict_list(3)
+    formatted_date = today_date()
+    return render_template("goods.html", today_date=formatted_date,
+                           projects_data=projects_data)
+
+
+@sections_bp.route("/Works", strict_slashes=False)
+@login_required
+def works():
+    """
+    Function to handle works data retrieval and rendering.
+
+    Retrieves projects data and today's date,
+    then renders the works.html template.
+
+    Parameters:
+    - None
+
+    Returns:
+    - Rendered template "works.html" with today's date and projects data.
+    """
+    projects_data = ProjectsData.projects_data_to_dict_list(4)
+    formatted_date = today_date()
+    return render_template("works.html", today_date=formatted_date,
+                           projects_data=projects_data)
+
+
+@sections_bp.route("/Services", strict_slashes=False)
+@login_required
+def services():
+    """
+    Function to handle Services route.
+
+    Retrieves projects data and today's date,
+    then renders the services.html template.
+
+    Parameters:
+    - None
+
+    Returns:
+    - Rendered template "services.html" with today's date and projects data.
+
+    """
+    projects_data = ProjectsData.projects_data_to_dict_list(2)
+    formatted_date = today_date()
+    return render_template("services.html", today_date=formatted_date,
+                           projects_data=projects_data)

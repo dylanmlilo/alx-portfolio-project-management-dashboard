@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
-from flask_login import login_required
 from models.plot_functions import today_date, plot_home_page_charts
 from models.projects import ProjectsData
+from flask_login import login_required
 
 
 home_bp = Blueprint('home', __name__)

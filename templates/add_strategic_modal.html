@@ -1,0 +1,78 @@
+{% block content %}
+<div id="myStrategicModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add New Data</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('strategic.insert_strategic_data') }}" method="post">
+                    <div class="form-group">
+                        <label>Task <span style="color: red;">*</span></label>
+                        <input type="text" class="form-control" name="task" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description </label>
+                        <input type="text" class="form-control" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label>Deliverable </label>
+                        <input type="text" class="form-control" name="deliverables">
+                    </div>
+                    <div class="form-group">
+                        <label>Assigned To <span style="color: red;">*</span></label>
+                        <select class="form-control form-select" name="assigned_to" required>
+                            {% for project_manager in project_managers %}
+                                <option value="{{ project_manager.id }}">{{ project_manager.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Deadline </label>
+                        <input type="text" class="form-control" name="deadline">
+                    </div>
+                    <div class="form-group">
+                        <label>Status <span style="color: red;">*</span></label>
+                        <select class="form-control form-select" name="status" required>
+                            <option value="Complete">Completed</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Overdue">Overdue</option>
+                            <option value="Not Started">Not Started</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority <span style="color: red;">*</span></label>
+                        <select class="form-control form-select" name="priority" required>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Percentage Done </label>
+                        <input type="number" class="form-control" name="percentage_done">
+                    </div>
+                    <div class="form-group">
+                        <label>Fixed Cost </label>
+                        <input type="number" class="form-control" name="fixed_cost" >
+                    </div>
+                    <div class="form-group">
+                        <label>Estimated Hours </label>
+                        <input type="number" class="form-control" name="estimated_hours">
+                    </div>
+                    <div class="form-group">
+                        <label>Actual Hours </label>
+                        <input type="number" class="form-control" name="actual_hours">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary left-aligned-button" style="float: left;" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

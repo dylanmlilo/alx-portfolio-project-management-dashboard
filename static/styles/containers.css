@@ -298,3 +298,26 @@ h3 {
 .admin_dashboard h1 {
     padding-top: 25px;
 }
+
+
+/* Modal Form Styles */
+
+.modal-body {
+    text-align: left;
+  }
+  
+  .modal-body .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .left-aligned-button {
+    float: left;
+  }
+  
+  .left-aligned-text {
+    text-align: left;
+  }
+
+  .right-aligned-text {
+    text-align: right;
+  }
