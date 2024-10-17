@@ -8,6 +8,12 @@ from routes.routes_gis_data import gis_data_bp
 from routes.routes_sections import sections_bp
 from routes.routes_landing import landing_bp
 from routes.routes_admin_dashboard import admin_dashboard_bp
+from routes.routes_projects import projects_bp
+from routes.routes_gis_activity import gis_activity_bp
+from routes.routes_gis_task import gis_task_bp
+from routes.routes_gis_resp_person import gis_resp_person_bp
+from routes.routes_APIs import api_bp
+from routes.routes_gis_output import gis_output_bp
 import os
 from dotenv import load_dotenv
 
@@ -19,9 +25,15 @@ app = Flask(__name__)
 app.register_blueprint(home_bp)
 app.register_blueprint(strategic_bp)
 app.register_blueprint(gis_data_bp)
+app.register_blueprint(gis_activity_bp)
+app.register_blueprint(gis_task_bp)
+app.register_blueprint(gis_resp_person_bp)
+app.register_blueprint(gis_output_bp)
 app.register_blueprint(sections_bp)
 app.register_blueprint(landing_bp)
 app.register_blueprint(admin_dashboard_bp)
+app.register_blueprint(projects_bp)
+app.register_blueprint(api_bp)
 app.secret_key = os.getenv("SECRET_KEY")
 
 
