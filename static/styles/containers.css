@@ -222,61 +222,9 @@ h3 {
     background-color: rgba(72, 203, 243, 0.6);
 }
 
-
-/* Login Styles */
-
-.login_container, .admin_dashboard, .denied_access_container {
-    background: linear-gradient(to top left, rgba(8, 58, 103, 0.95) 50%, rgb(142, 149, 150) 50%);
-    width: 80%;
-    height: 370px;
-    margin: 90px auto;
-    border-radius: 20px;
-    color: whitesmoke;
-    text-shadow: 1px 1px 2px #000;
-}
-
-.denlogadmin_container {
-    background: url("../images/stp.jpg") no-repeat center;
-}
-
-
-/* .admin_dashboard {
-    height: 300px;
-} */
-
-
-.login_container .alert {
-    color: red;
-    text-shadow: none;
-    font-size: 1.3rem;
-}
-
-.login_container .form-container label {
-    font-size: 1.3rem;
-    margin: 0 8px;
-}
-
-.login_container h1  {
-    padding-top: 60px;
-}
-
-.form-container {
-    margin-top: 30px;
-  }
-  
-  .form-container div {
-      display: block;
-      margin: 20px 0 0 0;
-  }
-  
-  .form-container .btn {
-    margin: 0 50px 0 0;
-  }
-
-
   /* Denied Access Styles */
 
-  .denied_access_title {
+.denied_access_title {
     font-size: 3rem;
     padding-top: 100px;
     text-shadow: 1px 1px 2px #000;
@@ -290,13 +238,38 @@ h3 {
 
 /* Admin Dashboard Styles */
 
+
+.admin_dashboard .admin_nav_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_dashboard .admin_nav_container .admin_nav {
+    margin: 10px 10px;
+    width: 60%;
+}
+
 .admin-dashboard_select {
-    margin-top: 60px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 35px;
 }
 
 .admin_dashboard h1 {
     padding-top: 25px;
+}
+
+.admin_dashboard .admin_nav {
+    background-color: rgb(87, 104, 143);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    margin: 0 20px;
+}
+
+.admin_dashboard .admin_nav:hover {
+    background-color: rgba(121, 122, 126, 0.95);
 }
 
 

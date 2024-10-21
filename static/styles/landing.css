@@ -55,3 +55,57 @@ h3 {
     color: #333;
     margin-bottom: 20px;
 }
+
+
+/* Login Styles */
+
+.login_container, .admin_dashboard, .denied_access_container {
+    background: linear-gradient(to top left, rgba(8, 58, 103, 0.95) 50%, rgb(142, 149, 150) 50%);
+    width: 80%;
+    height: 370px;
+    margin: 60px auto;
+    border-radius: 20px;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.denlogadmin_container {
+    background: url("../images/stp.jpg") no-repeat center;
+}
+
+.login_container .alert {
+    color: red;
+    text-shadow: none;
+    font-size: 1.3rem;
+}
+
+.login_container .form-container label {
+    font-size: 1.3rem;
+    margin: 0 8px;
+}
+
+.login_container h1  {
+    padding-top: 60px;
+}
+
+.form-container {
+    margin-top: 30px;
+  }
+  
+.form-container div {
+    display: block;
+    margin: 20px 0 0 0;
+}
+
+.form-container .form-submit {
+    background-color: #035fc1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container .form-submit:hover {
+    background-color: #28588c;
+}
