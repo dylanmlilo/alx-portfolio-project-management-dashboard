@@ -294,3 +294,37 @@ h3 {
   .right-aligned-text {
     text-align: right;
   }
+
+
+  /* Custom styles for the close button */
+.close {
+    margin: 5px auto;
+    font-size: 1.2rem;
+    color: #e8f0f5;
+    background-color: #a49b9b;
+    transition: opacity 0.3s ease;
+}
+
+.close:hover {
+    opacity: 1;
+    color: #716768;
+}
+
+/* Additional styles for the alert container */
+.alert-container {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 1050;
+    margin: 0;
+}
+
+.alert-container .alert-error {
+    background-color: #f8848e;
+    border-radius: 7px;
+}
+
+/* padding for the alert */
+.alert-container .alert {
+    padding: 0.5rem 1rem;
+}

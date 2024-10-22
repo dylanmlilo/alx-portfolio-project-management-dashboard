@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Integer, String, Text, Date, DECIMAL, ForeignKey
 from sqlalchemy.orm import relationship
 from models.projects import ProjectManagers
-from models.base import Base
+from models.base import BaseModel
 from models.engine.database import session
 
 
-class StrategicTask(Base):
+class StrategicTask(BaseModel):
     __tablename__ = 'strategic_tasks'
 
     task_id = Column(Integer, primary_key=True, autoincrement=True)
@@ -50,8 +50,7 @@ class StrategicTask(Base):
     def strategic_tasks_to_dict_list(cls) -> list:
         try:
             query = (
-                session.query(cls, ProjectManagers.name,
-                              ProjectManagers.section)
+                session.query(cls, ProjectManagers.name, ProjectManagers.section)
                 .join(ProjectManagers, cls.assigned_to == ProjectManagers.id)
             )
         except Exception as e:
@@ -64,20 +63,9 @@ class StrategicTask(Base):
 
         task_list = [
             {
-                'task_id': task.StrategicTask.task_id,
-                'status': task.StrategicTask.status,
-                'priority': task.StrategicTask.priority,
-                'deadline': task.StrategicTask.deadline,
-                'task': task.StrategicTask.task,
-                'description': task.StrategicTask.description,
-                'assigned_to': task.StrategicTask.assigned_to,
+                **task.StrategicTask.to_dict(),
                 'project_manager': task.name,
-                'section': task.section,
-                'deliverables': task.StrategicTask.deliverables,
-                'percentage_done': task.StrategicTask.percentage_done,
-                'fixed_cost': task.StrategicTask.fixed_cost,
-                'estimated_hours': task.StrategicTask.estimated_hours,
-                'actual_hours': task.StrategicTask.actual_hours
+                'section': task.section
             }
             for task in results
         ]
