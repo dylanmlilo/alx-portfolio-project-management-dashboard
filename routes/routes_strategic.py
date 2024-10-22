@@ -118,7 +118,6 @@ def insert_strategic_data():
                                      actual_hours=actual_hours)
             session.add(new_task)
             session.commit()
-            flash('Data inserted successfully')
             return redirect(url_for('strategic.strategic_planning_data'))
 
         except Exception as e:
@@ -178,7 +177,6 @@ def update_strategic_data(strategic_data_id):
                     task.actual_hours = None
 
                 session.commit()
-                flash('Data updated successfully')
                 return redirect(url_for('strategic.strategic_planning_data'))
 
         except Exception as e:

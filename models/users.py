@@ -1,9 +1,10 @@
 from sqlalchemy import Column, Integer, String
 from flask_login import UserMixin
-from models.base import Base
+from models.base import BaseModel
+from models.engine.database import session
 
 
-class Users(Base, UserMixin):
+class Users(BaseModel, UserMixin):
     """
     Represents a table for users with the following columns:
     - id (Integer): The primary key of the user.
@@ -46,3 +47,13 @@ class Users(Base, UserMixin):
     
     def has_role(self, role):
         return self.role == role
+    
+
+    @classmethod
+    def user_data_to_dict_list(cls):
+        try:
+            users = session.query(cls).all()
+        except Exception as e:
+            session.rollback()
+            print(f"An error occurred: {e}")
+        return [user.to_dict() for user in users]

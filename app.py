@@ -14,6 +14,7 @@ from routes.routes_gis_task import gis_task_bp
 from routes.routes_gis_resp_person import gis_resp_person_bp
 from routes.routes_APIs import api_bp
 from routes.routes_gis_output import gis_output_bp
+from routes.routes_users import users_bp
 import os
 from dotenv import load_dotenv
 
@@ -34,6 +35,7 @@ app.register_blueprint(landing_bp)
 app.register_blueprint(admin_dashboard_bp)
 app.register_blueprint(projects_bp)
 app.register_blueprint(api_bp)
+app.register_blueprint(users_bp)
 app.secret_key = os.getenv("SECRET_KEY")
 
 

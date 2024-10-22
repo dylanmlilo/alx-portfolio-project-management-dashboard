@@ -1,0 +1,60 @@
+{% block content %}
+<!-- Update Users Modal -->
+<div class="modal fade" id="updateUsersDataModal{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="updateUsersDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateUsersDataModalLabel">Edit Form</h5>
+        </div>
+        <div class="modal-body">
+          <form action="{{ url_for('users.update_user_data', user_data_id=user.id) }}" method="post">
+            <div class="form-group">
+                <label> Name <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="name" value="{{user.name}}" required>
+            </div>
+            <div class="form-group">
+                <label> Surname <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="surname" value="{{user.surname}}" required>
+            </div>
+            <div class="form-group">
+                <label>Username <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="username" value="{{user.username}}" required>
+            </div>
+            <div class="form-group">
+                <label> Password <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="password" value="{{user.password}}" required>
+            </div>
+            <div class="form-group">
+                <label> Email <span style="color: red;">*</span></label>
+                <input type="text" class="form-control" name="email" value="{{user.email}}" required>
+            </div>
+            <div class="form-group">
+                <label> Role <span style="color: red;">*</span></label>
+                <select class="form-control form-select" name="role" required>
+                    {% set role_options = {
+                        'admin': 'Administrator',
+                        'admin_projects': 'Admin Projects',
+                        'admin_gis': 'Admin GIS',
+                        'admin_struts': 'Admin Strategic Planning',
+                        'user': 'User'
+                    } %}
+                    
+                    {% for role_value, role_display in role_options.items() %}
+                        <option value="{{ role_value }}" {% if user.role == role_value %}selected{% endif %}>
+                            {{ role_display }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary left-aligned-button" style="float: left;" type="submit">Submit</button>
+            </div>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,10 +1,10 @@
 from sqlalchemy import Column, Integer, String, Text, Date, DECIMAL, ForeignKey
 from sqlalchemy.orm import relationship
-from models.base import Base
+from models.base import BaseModel
 from models.engine.database import session
 
 
-class Section(Base):
+class Section(BaseModel):
     __tablename__ = 'section'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -17,7 +17,7 @@ class Section(Base):
         return f"Section({self.name})"
 
 
-class ProjectManagers(Base):
+class ProjectManagers(BaseModel):
     __tablename__ = 'project_managers'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -45,25 +45,21 @@ class ProjectManagers(Base):
             list: A list of dictionaries containing project managers.
         """
         try:
-            query_filter = (cls.section == section_name if section_name
-                            else True)
+            query_filter = (cls.section == section_name) if section_name else True
             project_managers = session.query(cls).filter(query_filter).all()
         except Exception as e:
             session.rollback()
             print(f"An error occurred: {e}")
+            return []
         finally:
             session.close()
 
-        result_list = []
-        for row in project_managers:
-            result_dict = {}
-            for column in row.__table__.columns:
-                result_dict[column.name] = getattr(row, column.name)
-            result_list.append(result_dict)
+        result_list = [pm.to_dict() for pm in project_managers]
         return result_list
 
 
-class ContractType(Base):
+
+class ContractType(BaseModel):
     __tablename__ = 'contract_type'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -105,7 +101,7 @@ class ContractType(Base):
         return filtered_data
 
 
-class ProjectsData(Base):
+class ProjectsData(BaseModel):
     __tablename__ = 'projects_data'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -159,15 +155,16 @@ class ProjectsData(Base):
         Exclude the _sa_instance_state attribute.
 
         Args:
-            contract_type_id (str, optional): Filter results by contract_type_id.
+            contract_type_id (int, optional): Filter results by contract_type_id.
             Defaults to None.
 
         Returns:
             list: A list of dictionaries containing projects data with related data
-            from ContractType, ProjectManagers, and Section.
+                from ContractType, ProjectManagers, and Section.
         """
         if contract_type_id and not isinstance(contract_type_id, int):
             raise ValueError("Invalid contract_type_id")
+        
         try:
             query = (
                 session.query(cls)
@@ -175,28 +172,26 @@ class ProjectsData(Base):
                 .join(cls.project_manager)
                 .join(cls.section)
             )
+            
+            if contract_type_id:
+                query = query.filter(cls.contract_type_id == contract_type_id)
+
+            projects_data = query.all()
+
         except Exception as e:
             session.rollback()
             print(f"An error occurred: {e}")
-        finally:
-            session.close()
+            return []
 
-        if contract_type_id:
-            query = query.filter(cls.contract_type_id == contract_type_id)
-
-        projects_data = query.all()
-
-        result_list = []
-        for row in projects_data:
-            result_dict = {}
-            for column in row.__table__.columns:
-                result_dict[column.name] = getattr(row, column.name)
-
-            result_dict['contract_type'] = row.contract_type.name
-            result_dict['project_manager'] = row.project_manager.name
-            result_dict['section'] = row.section.name
-
-            result_list.append(result_dict)
+        result_list = [
+        {
+            **row.to_dict(),
+            'contract_type': row.contract_type.name,
+            'project_manager': row.project_manager.name,
+            'section': row.section.name,
+        }
+        for row in projects_data
+        ]
 
         sorted_result_list = sorted(result_list, key=lambda x: x["id"])
         return sorted_result_list
