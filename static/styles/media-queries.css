@@ -156,6 +156,11 @@
     .contact_info .copyright {
         font-size: 0.82rem;
     }
+
+    .landing_container {
+        background: url("../images/construction-site-3200.jpg");
+    }
+    
 }
 
 
