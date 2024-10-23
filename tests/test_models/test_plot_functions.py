@@ -1,14 +1,13 @@
 import unittest
 from unittest.mock import patch, MagicMock
 import json
-import pandas as pd
 from datetime import datetime
 from models.plot_functions import today_date, plot_home_page_charts, plot_servicing_page_charts
 
 
 class TestPlotFunctions(unittest.TestCase):
 
-    @patch('plot_functions.datetime')
+    @patch('models.plot_functions.datetime')
     def test_today_date(self, mock_datetime):
         mock_datetime.today.return_value = datetime(2023, 10, 14)
         expected_date = 'Sat, 14 October 2023'

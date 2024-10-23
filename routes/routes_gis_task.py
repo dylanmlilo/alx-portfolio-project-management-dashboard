@@ -12,7 +12,6 @@ gis_task_bp = Blueprint('gis_task', __name__)
 @login_required
 @required_roles("admin", "admin_gis")
 def insert_gis_task_data():
-
     if request.method == "POST":
         try:
             activity_id = request.form.get('activity_id')
@@ -28,51 +27,49 @@ def insert_gis_task_data():
                             percentage_of_activity=percentage_of_activity)
             session.add(new_task)
             session.commit()
-            flash('Data inserted successfully')
+            flash('Data inserted successfully!', 'success')
             return redirect(url_for('gis_data.gis_data'))
 
         except Exception as e:
             session.rollback()
-            return jsonify({'error': str(e)}), 400
+            flash('An error occurred while inserting the data. It looks like the activity you selected is not valid. Please make sure that the activity exists before adding the task.', 'error')
+            return redirect(url_for('gis_data.gis_data'))
 
         finally:
             session.close()
 
 
-@gis_task_bp.route(
-    "/update_gis_task_data/<int:gis_task_data_id>", methods=['POST'])
+@gis_task_bp.route("/update_gis_task_data/<int:gis_task_data_id>", methods=['POST'])
 @login_required
 @required_roles("admin", "admin_gis")
 def update_gis_task_data(gis_task_data_id):
     """
-    Updates the gis data into the database and redirects to the gis data page.
+    Updates the GIS task data in the database and redirects to the GIS data page.
 
     Returns:
-        flask.Response: A redirect response to the
-        dagista page or a JSON response with an error message.
+        flask.Response: A redirect response to the GIS data page or
+        a JSON response with an error message.
     """
     if request.method == 'POST':
         try:
-
             task = session.query(Task).filter_by(id=gis_task_data_id).first()
             if task:
                 task.activity_id = request.form.get('activity_id')
                 task.description = request.form.get('task_description')
-                percentage_of_activity = (
-                    request.form.get('percentage_of_activity')
-                    )
-                if percentage_of_activity:
-                    task.percentage_of_activity = percentage_of_activity
-                else:
-                    task.percentage_of_activity = None
+                percentage_of_activity = request.form.get('percentage_of_activity')
+                task.percentage_of_activity = float(percentage_of_activity) if percentage_of_activity else None
 
                 session.commit()
-                flash('Data updated successfully')
-                return redirect(url_for('gis_data.gis_data'))
+                flash('Data updated successfully!', 'success')
+            else:
+                flash('Task not found.', 'error')
+
+            return redirect(url_for('gis_data.gis_data'))
 
         except Exception as e:
             session.rollback()
-            return jsonify({'error': str(e)}), 400
+            flash('An error occurred while updating the data. It looks like the activity you selected is not valid. Please make sure that the activity exists before updating the task.', 'error')
+            return redirect(url_for('gis_data.gis_data'))
 
         finally:
             session.close()
@@ -83,23 +80,27 @@ def update_gis_task_data(gis_task_data_id):
 @required_roles("admin", "admin_gis")
 def delete_gis_task_data(gis_task_data_id):
     """
-    Deletes the gis data from the database and redirects to the gis data page.
+    Deletes the GIS task data from the database and redirects to the GIS data page.
 
     Returns:
-        flask.Response: A redirect response to the
-        dagista page or a JSON response with an error message.
+        flask.Response: A redirect response to the GIS data page or
+        a JSON response with an error message.
     """
     try:
         task = session.query(Task).filter_by(id=gis_task_data_id).first()
         if task:
             session.delete(task)
             session.commit()
-            flash('Data deleted successfully')
-            return redirect(url_for('gis_data.gis_data'))
+            flash('Data deleted successfully!', 'success')
+        else:
+            flash('Task not found.', 'error')
+
+        return redirect(url_for('gis_data.gis_data'))
 
     except Exception as e:
         session.rollback()
-        return jsonify({'error': str(e)}), 400
+        flash(f'An error occurred while deleting data: {str(e)}', 'error')
+        return redirect(url_for('gis_data.gis_data'))
 
     finally:
         session.close()

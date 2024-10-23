@@ -27,7 +27,7 @@ class TestAdminDashboardRoute(unittest.TestCase):
         mock_get_user.return_value.is_authenticated = False
         with self.app as client:
             response = client.get(url_for('admin_dashboard.admin_dashboard'))
-            self.assertEqual(response.status_code, 302)  # Redirects to login page
+            self.assertEqual(response.status_code, 302)
 
 if __name__ == '__main__':
     unittest.main()

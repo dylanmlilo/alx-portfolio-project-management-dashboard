@@ -42,11 +42,11 @@ def projects_data():
 
 @projects_bp.route("/insert_project_manager", methods=['POST'])
 @login_required
-@required_roles('admin', 'admin_projects')
+@required_roles('admin', 'admin_projects', 'admin_struts')
 def insert_project_manager():
     """
-    Function to handle insert project manager route."""
-
+    Function to handle insert project manager route.
+    """
     if request.method == 'POST':
         try:
             name = request.form.get('name')
@@ -55,12 +55,13 @@ def insert_project_manager():
             new_project_manager = ProjectManagers(name=name, section=section)
             session.add(new_project_manager)
             session.commit()
-            flash('Data inserted successfully')
+            flash('Project manager added successfully!', 'success')
             return redirect(request.referrer)
 
         except Exception as e:
             session.rollback()
-            return jsonify({'error': str(e)}), 400
+            flash(f'An error occurred while adding the project manager: {str(e)}', 'error')
+            return redirect(request.referrer)
 
         finally:
             session.close()
@@ -70,41 +71,40 @@ def insert_project_manager():
     "/update_projects_project_manager/<int:project_manager_id>",
     methods=['POST'])
 @login_required
-@required_roles('admin', 'admin_projects')
+@required_roles('admin', 'admin_projects', 'admin_struts')
 def update_projects_project_manager(project_manager_id):
     """
-    Function to handle update project manager route."""
-
+    Function to handle update project manager route.
+    """
     if request.method == 'POST':
         try:
             project_manager = (
                 session.query(ProjectManagers)
                 .filter_by(id=project_manager_id)
                 .first()
-                )
+            )
             if project_manager:
                 project_manager.name = request.form.get('name')
                 project_manager.section = request.form.get('section')
                 session.commit()
-                flash('Data updated successfully')
+                flash('Project manager updated successfully!', 'success')
             else:
-                flash('Project manager not found')
+                flash('Project manager not found.', 'error')
 
             return redirect(request.referrer)
 
         except Exception as e:
             session.rollback()
-            return jsonify({'error': str(e)}), 400
+            flash(f'An error occurred while updating the project manager: {str(e)}', 'error')
+            return redirect(request.referrer)
 
         finally:
             session.close()
 
 
-@projects_bp.route(
-    "/delete_projects_project_manager/<int:project_manager_id>",
-    )
+@projects_bp.route("/delete_projects_project_manager/<int:project_manager_id>")
 @login_required
-@required_roles('admin', 'admin_projects')
+@required_roles('admin', 'admin_projects', 'admin_struts')
 def delete_projects_project_manager(project_manager_id):
     """
     Function to handle delete project manager route.
@@ -114,26 +114,25 @@ def delete_projects_project_manager(project_manager_id):
 
     Returns:
     - A redirect response to the projects data page.
-
     """
     try:
         project_manager = (
             session.query(ProjectManagers)
             .filter_by(id=project_manager_id)
             .first()
-            )
+        )
         if project_manager:
             session.delete(project_manager)
             session.commit()
-            flash('Data deleted successfully')
+            flash('Project manager deleted successfully!', 'success')
+            return redirect(request.referrer)
         else:
-            flash('Project manager not found')
-
-        return redirect(request.referrer)
+            return redirect(request.referrer)
 
     except Exception as e:
         session.rollback()
-        return jsonify({'error': str(e)}), 400
+        flash(f'An error occurred while deleting the project manager: {str(e)}', 'error')
+        return redirect(request.referrer)
     
     finally:
         session.close()
