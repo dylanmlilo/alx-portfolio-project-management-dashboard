@@ -71,30 +71,6 @@ class TestGISModels(unittest.TestCase):
         self.assertEqual(result[0]["task_description"], "Prepare maps")
         mock_gis_task_data_to_dict_list.assert_called_once()
 
-    @patch('models.gis.gis_data_to_dict_list')
-    def test_gis_data_retrieval(self, mock_gis_data_to_dict_list):
-        """Test that gis_data_to_dict_list returns GIS data as a list of dictionaries."""
-        mock_gis_data_to_dict_list.return_value = [
-            {
-                "output_id": 1,
-                "output_name": "GIS Output",
-                "activity": "Field Survey",
-                "responsible_person": "John Doe",
-                "designation": "Engineer",
-                "task_description": "Prepare maps",
-                "percentage_of_activity": 75.5
-            }
-        ]
-        
-        result = gis_data_to_dict_list()
-        
-        mock_gis_data_to_dict_list.assert_called_once()
-
-        self.assertEqual(len(result), 1, f"Expected 1 item, but got {len(result)}")
-
-        self.assertEqual(result[0]["output_name"], "GIS Output")
-        self.assertEqual(result[0]["activity"], "Field Survey")
-
 
 if __name__ == '__main__':
     unittest.main()

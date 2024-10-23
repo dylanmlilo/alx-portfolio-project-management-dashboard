@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="updateStrategicModalLabel">Edit Form</h5>
+          <h5 class="modal-title" id="updateStrategicModalLabel">Edit Data</h5>
         </div>
         <div class="modal-body">
           <form action="{{ url_for('strategic.update_strategic_data', strategic_data_id=strategic_data.task_id) }}" method="post">
@@ -14,11 +14,11 @@
             </div>
             <div class="form-group">
                 <label>Description </label>
-                <input type="text" class="form-control" name="description" value="{{ strategic_data.description }}">
+                <input type="text" class="form-control" name="description" value="{{ strategic_data.description or '' }}">
             </div>
             <div class="form-group">
                 <label>Deliverable </label>
-                <input type="text" class="form-control" name="deliverables" value="{{ strategic_data.deliverables }}">
+                <input type="text" class="form-control" name="deliverables" value="{{ strategic_data.deliverables  or ''}}">
             </div>
             <div class="form-group">
                 <label>Assigned To <span style="color: red;">*</span></label>
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label>Deadline </label>
-                <input type="text" class="form-control" name="deadline" value="{{ strategic_data.deadline }}">
+                <input type="text" class="form-control" name="deadline" value="{{ strategic_data.deadline or '' }}">
             </div>
             <div class="form-group">
                 <label>Status <span style="color: red;">*</span></label>

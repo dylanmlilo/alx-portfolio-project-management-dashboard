@@ -118,18 +118,19 @@ def insert_strategic_data():
                                      actual_hours=actual_hours)
             session.add(new_task)
             session.commit()
+            flash('Strategic task added successfully!', 'success')
             return redirect(url_for('strategic.strategic_planning_data'))
 
         except Exception as e:
             session.rollback()
-            return jsonify({'error': str(e)}), 400
+            flash(f'An error occurred while adding the task: {str(e)}', 'error')
+            return redirect(url_for('strategic.strategic_planning_data'))
 
         finally:
             session.close()
 
 
-@strategic_bp.route(
-    "/update_strategic_data/<int:strategic_data_id>", methods=['POST'])
+@strategic_bp.route("/update_strategic_data/<int:strategic_data_id>", methods=['POST'])
 @login_required
 @required_roles('admin', 'admin_struts')
 def update_strategic_data(strategic_data_id):
@@ -147,8 +148,7 @@ def update_strategic_data(strategic_data_id):
     """
     if request.method == 'POST':
         try:
-            task = (session.query(StrategicTask)
-                    .filter_by(task_id=strategic_data_id).first())
+            task = session.query(StrategicTask).filter_by(task_id=strategic_data_id).first()
             if task:
                 task.task = request.form.get('task')
                 task.description = request.form.get('description')
@@ -177,11 +177,16 @@ def update_strategic_data(strategic_data_id):
                     task.actual_hours = None
 
                 session.commit()
+                flash('Strategic task updated successfully!', 'success')
+                return redirect(url_for('strategic.strategic_planning_data'))
+            else:
+                flash('Task not found.', 'error')
                 return redirect(url_for('strategic.strategic_planning_data'))
 
         except Exception as e:
             session.rollback()
-            return jsonify({'error': str(e)}), 400
+            flash(f'An error occurred while updating the task: {str(e)}', 'error')
+            return redirect(url_for('strategic.strategic_planning_data'))
 
         finally:
             session.close()
@@ -204,17 +209,20 @@ def delete_strategic_data(strategic_data_id):
     - Rendered template "strategic_planning.html" with strategic data list.
     """
     try:
-        task = (session.query(StrategicTask)
-                .filter_by(task_id=strategic_data_id).first())
+        task = session.query(StrategicTask).filter_by(task_id=strategic_data_id).first()
         if task:
             session.delete(task)
             session.commit()
-            flash('Data deleted successfully')
+            flash('Strategic task deleted successfully!', 'success')
+            return redirect(url_for('strategic.strategic_planning_data'))
+        else:
+            flash('Task not found.', 'error')
             return redirect(url_for('strategic.strategic_planning_data'))
 
     except Exception as e:
         session.rollback()
-        return jsonify({'error': str(e)}), 400
+        flash(f'An error occurred while deleting the task: {str(e)}', 'error')
+        return redirect(url_for('strategic.strategic_planning_data'))
 
     finally:
         session.close()

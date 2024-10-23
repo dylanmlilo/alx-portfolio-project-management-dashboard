@@ -2,27 +2,27 @@
 
 {% block content %}
 <p class="card-text date">{{ today_date }}</p>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    <div class="alert-container">
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endwith %}
 <div class="stats_data_container">
     <div class="row">
         <div class="col md-12">
             <div class="jumbotron data_container p-3">
                 <h2 class="left-aligned-text">Users Data
                     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myUsersDataModal">Add New Data</button>
-                </h2>
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                  <div class="alert-container">
-                    {% for category, message in messages %}
-                      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-              {% endwith %}              
+                </h2>              
                 <div class="table-responsive">
                     <table id="user_data_table" class="table table-hover table-bordered table-striped">
                         <thead>
